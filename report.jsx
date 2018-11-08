@@ -11,16 +11,12 @@ const dimensions = [
   { value: 'host', title: 'Host' }
 ]
 
-const initialMemo = {
-  impressions: 0,
-  loads: 0,
-  displays: 0
-}
-
 const reduce = function (row, memo) {
-  memo = Object.assign(initialMemo, memo)
+  memo.impressions = memo.impressions || 0
+  memo.loads = memo.loads || 0
+  memo.displays = memo.displays || 0
 
-  if(row.type === 'impression')
+  if (row.type === 'impression')
     memo.impressions += 1
   else if (row.type === 'load')
     memo.loads += 1
